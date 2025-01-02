@@ -52,43 +52,75 @@ export class MovieList extends Component {
   //     })
   // }
 
-  addStar = (index) => {
-    this.setState((prevState) => {
-      const movies = [...prevState.movies];
-      if (movies[index].star < 5) {
-        movies[index].star += 0.5;
-      }
-      return { movies };
-    });
+  // addStar = (index) => {
+  //   this.setState((prevState) => {
+  //     const movies = [...prevState.movies];
+  //     if (movies[index].star < 5) {
+  //       movies[index].star += 0.5;
+  //     }
+  //     return { movies };
+  //   });
+  // };
+
+  handleAddStar = (index) => {
+    const { movies } = this.state;
+    if (movies[index].star < 5) {
+      movies[index].star += 0.5;
+    }
+    this.setState({
+      movies
+    })
   };
 
-  decreaseStar = (index) => {
-    this.setState((prevState) => {
-      const movies = [...prevState.movies];
-      if (movies[index].star > 0) {
-        movies[index].star -= 0.5;
-      }
-      return { movies };
-    });
-  };
+  // decreaseStar = (index) => {
+  //   this.setState((prevState) => {
+  //     const movies = [...prevState.movies];
+  //     if (movies[index].star > 0) {
+  //       movies[index].star -= 0.5;
+  //     }
+  //     return { movies };
+  //   });
+  // };
 
-  toggleFav = (index) => {
-    this.setState((prevState) => {
-      const movies = [...prevState.movies];
-      movies[index].fav = !movies[index].fav;
-      //   movies[index].fav = !prevState.movies[index].fav;
-      return { movies };
+  handleDecreaseStar = (index) => {
+    const { movies } = this.state;
+    if (movies[index].star > 0) {
+      movies[index].star -= 0.5;
+    }
+    this.setState({
+      movies
     });
-  };
+  }
 
-  toggleCart = (index) => {
-    this.setState((prevState) => {
-      const movies = [...prevState.movies];
-      movies[index].isInCart = !movies[index].isInCart;
-      console.log("Toggling isInCart:", movies[index].isInCart);
-      return { movies };
-    });
-  };
+  // toggleFav = (index) => {
+  //   this.setState((prevState) => {
+  //     const movies = [...prevState.movies];
+  //     movies[index].fav = !movies[index].fav;
+  //     //   movies[index].fav = !prevState.movies[index].fav;
+  //     return { movies };
+  //   });
+  // };
+
+  handleToggleFav = (index) => {
+    const { movies } = this.state;
+    movies[index].fav = !movies[index].fav;
+    this.setState({ movies });
+  }
+
+  // toggleCart = (index) => {
+  //   this.setState((prevState) => {
+  //     const movies = [...prevState.movies];
+  //     movies[index].isInCart = !movies[index].isInCart;
+  //     console.log("Toggling isInCart:", movies[index].isInCart);
+  //     return { movies };
+  //   });
+  // };
+
+  handleToggleCart = (index) => {
+    const { movies } = this.state;
+    movies[index].isInCart = !movies[index].isInCart;
+    this.setState({ movies });
+  }
 
   render() {
     const movies = this.state.movies;
@@ -99,10 +131,10 @@ export class MovieList extends Component {
               <MovieCard
                 key={index}
                 movie={movie}
-                addStar={() => this.addStar(index)}
-                decreaseStar={() => this.decreaseStar(index)}
-                toggleFav={() => this.toggleFav(index)}
-                toggleCart={() => this.toggleCart(index)}
+                addStar={() => this.handleAddStar(index)}
+                decreaseStar={() => this.handleDecreaseStar(index)}
+                toggleFav={() => this.handleToggleFav(index)}
+                toggleCart={() => this.handleToggleCart(index)}
               />
             ))
           : "No movie"}
