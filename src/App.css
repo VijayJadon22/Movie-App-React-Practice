@@ -12,6 +12,7 @@ body {
   background-color: rgb(222, 222, 222);
   background-image: url("https://media.istockphoto.com/id/1179553210/vector/film-strip-roll-frame-cinema-with-place-for-text-vector-cinema-festival-poster-banner-or.jpg?s=170667a&w=0&k=20&c=zFE4VHd3-Vncq3qf7O_7ZaNa7ubvH9-eXrrK2LA-ueE=");
   background-size: cover;
+  
 }
 
 .main-container {
@@ -34,9 +35,9 @@ body {
   padding: 10px;
 }
 
-.main div {
+/* .main div {
   border: 1px solid red
-}
+} */
 
 .star-image {
   width: 18px;
@@ -60,10 +61,11 @@ body {
 
 .btn-container {
   display: flex;
-  width: 130px;
+  width: 150px;
   justify-content: space-between;
 
   & button {
+    width: 70px;
     font-size: 12px;
     padding: 5px;
     background-color: rgb(83, 83, 234);
@@ -75,6 +77,19 @@ body {
 
   & .favourite {
     background-color: rgb(199, 12, 209);
+  }
+   
+  & .unfavourite {
+    background-color: red;
+  }
+
+  & .remove-cart-btn{
+    background-color: red;
+  }
+
+  & .add-to-cart-btn{
+    background-color: rgb(83, 83, 234);
+    
   }
 }
 
